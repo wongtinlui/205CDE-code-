@@ -1,0 +1,108 @@
+
+
+<!--- Base page for users page --->
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <!-- Different Title -->
+        {% block head %}
+        {% endblock %}
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{ url_for("static",filename="css/base.css")}}">
+
+        <!-- icon -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='image/favicon.ico') }}">
+
+    </head>
+
+    <body>
+
+        <!-- Navbar Menu -->
+        <nav class="navbar navbar-expand-lg navbar-light" style='background-color: rgba(124, 124, 124, 0.904);'>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for("index") }}">
+                <img src="{{ url_for("static",filename="image/logo.png")}}" alt="logo" style="width:60px;height: 60px;border-radius: 50%;">
+                <strong>GSW</strong>
+            </a>
+        
+            
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for("store") }}">Store</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for("about") }}">About Us </a>
+                </li>
+                
+                {% if session['uname'] %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for("logout") }}">Log Out</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">{{ session['uname'] }}</a>
+                    <div class="dropdown-menu" style="background-color:rgba(160, 160, 160, 0.534);">
+                        <a class="dropdown-item" href="{{ url_for("personal") }}" target="_blank">User Setting</a>
+                        <a class="dropdown-item" href="{{ url_for("vieworders") }}" target="_blank">Check Orders</a>
+                    </div>
+                </li>
+                
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for("login") }}">Log In</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for("register") }}">Register</a>
+                </li>
+
+                {% endif %}
+
+                </ul>
+
+                <form class="form-inline" action="/search" method="get">
+                    <input class="form-control mr-sm-2" type="search"
+                           placeholder="Search" aria-label="Search" name="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                    Style="color:aqua; background-color: rgba(136, 136, 136, 0.856)">Search</button>
+                </form>
+            </div>
+            </nav>
+
+        <!-- Different Main Parts -->
+
+        {% block main %}
+
+        {% endblock %}
+
+
+        <!-- Footer -->
+        <div class="footerstyle">
+            <footer class="page-footer font-small blue">
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2019 Copyright:
+                    <a href="#"> Tavis</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+    </body>
+</html>

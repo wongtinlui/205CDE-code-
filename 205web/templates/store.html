@@ -1,0 +1,64 @@
+
+
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Store</title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/store.css")}}">
+
+{% endblock %}
+
+{% block main %}
+   <div class="content">
+        {% include "flashmsghelper.html" %}
+        <h1 id="productheader">T-Shirt</h1>
+        <div class="row">
+            {% for tshirt in tshirt %}
+            {% if tshirt.ptype == 'tshirt' %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card mb-4" id="carddes">
+                    <a href="/detail?pid={{tshirt.pid}}">
+                        <div class="inner">
+                            <img class="card-img-top id_{{tshirt.pid}}"
+                            style="background: url(
+                                     'static/image/product/{{tshirt.ptype}}/{{tshirt.plink}}');
+                                     background-repeat:no-repeat;
+                                     background-size: cover; height:400px;width:100% ">
+                        </div>
+                        <div class="card-body" id="carword">
+                            <h5>{{ tshirt.pname }}</h5>
+                            <h4>${{ tshirt.pprice }}</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <h1 id="productheader">Shorts</h1>
+        <div class="row">
+            {% for tshirt in shorts %}
+            {% if tshirt.ptype == 'shorts' %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card mb-4" id="carddes">
+                    <a href="/detail?pid={{tshirt.pid}}">
+                        <div class="inner">
+                            <img class="card-img-top id_{{tshirt.pid}}"
+                            style="background: url(
+                                     'static/image/product/{{tshirt.ptype}}/{{tshirt.plink}}');
+                                     background-repeat:no-repeat;
+                                     background-size: cover; height:400px;width:100% ">
+                        </div>
+                        <div class="card-body" id="carword">
+                            <h5>{{ tshirt.pname }}</h5>
+                            <h4>${{ tshirt.pprice }}</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+   </div>
+
+{% endblock %}

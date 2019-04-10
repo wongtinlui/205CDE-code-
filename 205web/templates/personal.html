@@ -1,0 +1,43 @@
+
+
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Personal Page</title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/login.css")}}">
+    
+
+{% endblock %}
+
+{% block main %}
+<div class="bg">
+    <br><br><br><br><br><br>
+    <div class="jumbotron" style="background-color:rgba(240, 255, 255, 0.541);">
+        {% include "flashmsghelper.html" %}
+        <h2 style="text-align: center; color: #206aaa;">Update profile info</h2>
+            <div>
+                {% if result %}
+                {% from "formhelpers.html" import render_field %}
+                <form method="POST" action="">
+                    <div class="form-group">
+                        {{render_field(form.email, class="form-control", value=result.useremail)}}
+                    </div>
+                    <div class="form-group">
+                        {{render_field(form.name, class_="form-control", value=result.username)}}
+                    </div>
+                    <div class="form-group">
+                        {{render_field(form.pw, class="form-control")}}
+                    </div>
+                    <div class="form-group">
+                        {{render_field(form.address, class="form-control", value=result.useraddress)}}
+                    </div>
+                    <p>
+                        <input type="submit" class="btn btn-primary" value="Update Settings">
+                    </p>
+                </form>
+                {% endif%}
+            </div>
+    </div>
+</div>
+
+{% endblock %}

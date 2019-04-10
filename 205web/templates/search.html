@@ -1,0 +1,37 @@
+
+
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Search</title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/search.css")}}">
+
+{% endblock %}
+
+{% block main %}
+<div class="content">
+    <h1 id="productheader">Result</h1>
+    {% include "flashmsghelper.html" %}
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="card mb-4" id="carddes">
+                <a href="/detail?pid={{product.pid}}">
+                    <div class="card-img-top id_{{product.pid}}"
+                        style="background: url(
+                                'static/image/product/{{product.ptype}}/{{product.plink}}');
+                                background-repeat:no-repeat;
+                                background-size: cover; height:400px;width:100% ">
+                    </div>
+                    <div class="card-body" id="carword">
+                        <h5>{{ product.pname }}</h5>
+                        <h4>${{ product.pprice }}</h4>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

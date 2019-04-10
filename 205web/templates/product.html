@@ -1,0 +1,38 @@
+
+
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Product</title>
+    
+{% endblock %}
+
+{% block main %}
+   <div class="content2">
+        <h1 id="productheader"><a href="/tshirt">T-Shirt</a></h1>
+        <div class="row">
+            {% for tshirt in tshirt %}
+            {% if tshirt.ptype == 'tshirt' %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card mb-4" id="carddes">
+                    <a href="/{{tshirt.ptype}}?pid={{tshirt.pid}}">
+                        <div class="inner">
+                            <img class="card-img-top id_{{tshirt.pid}}"
+                            style="background: url(
+                                     'static/image/product/{{tshirt.ptype}}/{{tshirt.pid}}');
+                                     background-repeat:no-repeat;
+                                     background-size: cover; height:200px;width:100% ">
+                        </div>
+                        <div class="card-body" id="carword">
+                            <h5>{{ tshirt.pname }}</h5>
+                            <h4>${{ tshirt.pprice }}</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+   </div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+
+
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Index</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/index.css")}}">
+    <script src="{{ url_for("static",filename="js/jquery.vide.js")}}"></script>
+    
+
+{% endblock %}
+
+{% block main %}
+    <body data-vide-bg="{{ url_for("static",filename="video1.mp4")}}">
+        <h1 class="words">Welcome <br><br>To<br><br>NBA Golden State Warriors </h1>
+   </body>
+   <div class="content2">
+       <div class="options">
+            {% include "flashmsghelper.html" %}
+            <div class="row">
+               <div class="col-lg-4" >
+                    <a href="{{ url_for("store") }}"><button type="button" class="btn btn-success" ><h1>Store</h1></button>
+                    <span><h3>Come to buy GSW collections</h3></span>
+                    </a>
+               </div>
+               <div class="col-lg-4">
+                    <a href="https://www.nba.com/search#/golden%20state%20warriors"><button type="button" class="btn btn-info"><h1>News</h1></button>
+                    <span><h3>Get the newest information</h3></span>
+                    </a>
+               </div>
+               <div class="col-lg-4">
+                    <a href="{{ url_for("about") }}"><button type="button" class="btn btn-info"><h1>About us</h1></button>
+                    <span><h3>More information</h3></span>
+                    </a>
+               </div>
+           </div>
+       </div>
+   </div>
+
+{% endblock %}

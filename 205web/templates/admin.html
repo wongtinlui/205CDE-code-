@@ -1,0 +1,32 @@
+
+
+{% extends "adbase.html" %}
+
+{% block head %}
+    <title>store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/adminlogin.css")}}">
+
+{% endblock %}
+
+{% block main %}
+   <div class="content">
+       <h3>Welcome {{ session['adname'] }}</h3>
+    </div>
+    <div class="content2">
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="{{ url_for("adalluser")}}"><button class="btn"><i class="fa fa-folder"></i>All User</button></a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{{ url_for("adallpro")}}"><button class="btn"><i class="fa fa-folder"></i>All Products</button></a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{{ url_for("adallorders")}}"><button class="btn"><i class="fa fa-folder"></i>All Orders</button></a>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

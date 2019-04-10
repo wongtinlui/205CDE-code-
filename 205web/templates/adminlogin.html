@@ -1,0 +1,31 @@
+
+
+{% extends "adbase.html" %}
+
+{% block head %}
+    <title>AdminLogin</title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/adminlogin.css")}}">
+
+{% endblock %}
+
+{% block main %}
+<div class="content">
+    <div class="jumbotron" style="background-color:rgba(240, 255, 255, 0.541);">
+        {% include "flashmsghelper.html" %}
+        <h2 style="text-align: center; color: #206aaa;">Admin Login</h2>
+            {% from "formhelpers.html" import render_field %}
+            <div>
+                <form method="POST" action="">
+                    <div class="form-group" style='opacity: 0.5;'>
+                        {{render_field(form.username, class_="form-control")}}
+                    </div>
+                    <div class="form-group" style='opacity: 0.5;'>
+                        {{render_field(form.password, class_="form-control")}}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Login</button><br>
+                </form>
+            </div>
+    </div>
+</div>
+{% endblock %}

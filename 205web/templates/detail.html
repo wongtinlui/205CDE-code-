@@ -1,0 +1,51 @@
+
+
+{% extends "base.html" %}
+
+{% block head %}
+    <title>Detail</title>
+    <link rel="stylesheet" href="{{ url_for("static",filename="css/detail.css")}}">
+
+{% endblock %}
+
+{% block main %}
+   <div class="content">
+        <div class="row">
+            <div class="col-lg-3 my-4">
+                <div class="list-group">
+                    <a href="{{ url_for("store") }}" class="list-group-item">Store</a>
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+            <div class="col-lg-9">
+                <div class="row">
+                    {% for product in product %}
+                    <div class="col-lg-6">
+                        <div class="card mt-4">
+                            <img class="card-img-top img-fluid"
+                                    src="static/image/product/{{product.ptype}}/{{product.plink}}" alt="">
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                    <div class="col-lg-6">
+                        <div class="card card-outline-secondary my-4">
+                            <div class="card-header">
+                                Product Details
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{ product.pname}}</h3>
+                                <h4>${{ product.pprice}}</h4>
+                                <p class="card-text">{{ product.pdetail}}</p>
+                                <a href="/detail?order={{product.pid}}" class="btn btn-success">Order Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.col-lg-9 -->
+        </div>
+   </div>
+
+{% endblock %}
